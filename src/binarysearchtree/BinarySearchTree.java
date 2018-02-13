@@ -6,7 +6,7 @@ import java.util.List;
 public class BinarySearchTree {
 
     Node root;
-    List<Integer> kage = new ArrayList<>();
+    List<Integer> list = new ArrayList<>();
 
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
@@ -18,7 +18,7 @@ public class BinarySearchTree {
         bst.put(11, "M");
         bst.put(29, "O");
         bst.removeNode(29);
-        bst.keys(bst.kage, bst.root);
+        bst.keys(bst.list, bst.root);
         System.out.println(bst.size(bst.root));
         System.out.println(bst.get(11, bst.root));
         System.out.println(bst.containsKey(29, bst.root));
