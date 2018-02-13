@@ -16,21 +16,29 @@ public class BinarySearchTreeTest {
     }
 
 
+//    @Test
+//    public void testPut() 
+//    {
+//        System.out.println("Test put");
+//        int key = 10;
+//        String name = "Test";
+//        
+//        BinarySearchTree bst = new BinarySearchTree();
+//        
+//        assertNull(bst.get(key));
+//        bst.put(key, name);
+//        assertEquals(name, bst.get(key));     
+//    }
+
     @Test
-    public void testPut() 
-    {
-        System.out.println("Test put");
-        int key = 10;
-        String name = "Test";
-        
+    public void testPut2() {
         BinarySearchTree bst = new BinarySearchTree();
+        bst.put(0, "john");
+        String expResult = "john has key 0";
+        Node result = bst.get(0,bst.root);
+        assertEquals(expResult, result.toString());
         
-        assertNull(bst.get(key));
-        bst.put(key, name);
-        assertEquals(name, bst.get(key));     
     }
-
-
     @Test
     public void testKeys() {
     }
