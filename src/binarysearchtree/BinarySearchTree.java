@@ -230,13 +230,12 @@ public class BinarySearchTree {
     
     public void keys(List<Integer> list, Node node){
         if (node == null) {
-            System.out.println("kage");
+            System.out.println(list.toString());
             return;
         }
         keys(list, node.leftC);
         list.add(node.key);
         keys(list, node.rightC);
-        System.out.println(list.toString());
     }
     
     public int size(Node node) 
