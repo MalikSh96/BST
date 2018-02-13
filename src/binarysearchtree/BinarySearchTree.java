@@ -20,13 +20,13 @@ public class BinarySearchTree {
         System.out.println(bst.containsKey(29, bst.root));
     }
     
-    public String get(int key)
-    {
-        Node node = get(key, root);        
-        return node == null ? null : node.name;
-    }
+//    public String get(int key)
+//    {
+//        Node node = get(key, root);        
+//        return node == null ? null : node.name;
+//    }
 
-    private Node get(int key, Node node) 
+    public Node get(int key, Node node) 
     {
         Node getNode = null;
         if (node == null) return null;
