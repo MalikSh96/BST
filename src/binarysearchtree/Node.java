@@ -2,10 +2,10 @@ package binarysearchtree;
 
 public class Node 
 {
-    private int key;
-    private String name;
-    public Node leftC;
-    public Node rightC;
+    int key;
+    String name;
+    Node leftC;
+    Node rightC;
 
     public Node(int key, String name) 
     {
