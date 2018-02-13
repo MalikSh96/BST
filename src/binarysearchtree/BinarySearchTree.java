@@ -2,13 +2,8 @@ package binarysearchtree;
 
 public class BinarySearchTree 
 {
-
     Node root;
 
-    public BinarySearchTree() {
-    }
-    
-    
     public static void main(String[] args) 
     {
         BinarySearchTree bst = new BinarySearchTree();
@@ -17,7 +12,9 @@ public class BinarySearchTree
         bst.put(5, "C");
         bst.put(20, "D");
         bst.put(1, "E");
-        bst.Print(bst.root);
+        bst.put(10, "M");
+        bst.keys(bst.root);
+        System.out.println(bst.size(bst.root));
         
     }
     
@@ -26,7 +23,7 @@ public class BinarySearchTree
 //         
 //    }
     
-//    public boolean containsKey(int key)
+//    public boolean containsKey(Node key)
 //    {
 //        
 //    }
@@ -61,29 +58,24 @@ public class BinarySearchTree
         }
     }
 
-
-    
     public void put(int key, String name)
-    {
-        
+    {   
         if(root == null)
         {
             //Make new root
             root = new Node(key, name);
             return;
-        }
-        
-        put(key, name, root);
-       
+        }       
+        put(key, name, root);       
     }
     
-    public void Print(Node node)
+    public void keys(Node node)
     {
         if(node != null)
         {
             System.out.println(node);
-            Print(node.leftC);
-            Print(node.rightC);
+            keys(node.leftC);
+            keys(node.rightC);
         }
     }
     
@@ -96,3 +88,4 @@ public class BinarySearchTree
         }
     }
 }
+
