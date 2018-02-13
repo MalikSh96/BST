@@ -1,8 +1,12 @@
 package binarysearchtree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinarySearchTree {
 
     Node root;
+    List<Integer> kage = new ArrayList<>();
 
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
@@ -14,17 +18,17 @@ public class BinarySearchTree {
         bst.put(11, "M");
         bst.put(29, "O");
         bst.removeNode(29);
-        bst.keys(bst.root);
+        bst.keys(bst.kage, bst.root);
         System.out.println(bst.size(bst.root));
         System.out.println(bst.get(11, bst.root));
         System.out.println(bst.containsKey(29, bst.root));
     }
     
-//    public String get(int key)
-//    {
-//        Node node = get(key, root);        
-//        return node == null ? null : node.name;
-//    }
+    public String get(int key)
+    {
+        Node node = get(key, root);        
+        return node == null ? null : node.name;
+    }
 
     public Node get(int key, Node node) 
     {
@@ -217,16 +221,24 @@ public class BinarySearchTree {
         return replacement;
     }
      
-    public void keys(Node node) 
+    public List<Integer> keys() 
     {
-        if (node != null) 
-        {
-            System.out.println(node);
-            keys(node.leftC);
-            keys(node.rightC);
-        }
+        List<Integer> list = new ArrayList<>();
+        keys(list, root);
+        return list;
     }
-
+    
+    public void keys(List<Integer> list, Node node){
+        if (node == null) {
+            System.out.println("kage");
+            return;
+        }
+        keys(list, node.leftC);
+        list.add(node.key);
+        keys(list, node.rightC);
+        System.out.println(list.toString());
+    }
+    
     public int size(Node node) 
     {
         if (node == null) 
