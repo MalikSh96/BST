@@ -17,7 +17,7 @@ public class BinarySearchTree {
         bst.keys(bst.root);
         System.out.println(bst.size(bst.root));
         System.out.println(bst.get(11, bst.root));
-        System.out.println(bst.containsKey(352365, bst.root));
+        System.out.println(bst.containsKey(29, bst.root));
     }
 
     public Node get(int key, Node node) 

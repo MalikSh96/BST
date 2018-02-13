@@ -10,28 +10,14 @@ public class BinarySearchTreeTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
     }
 
-    @Test
-    public void testMain() {
-    }
-
-    @Test
-    public void testGet() {
-    }
-
-    @Test
-    public void testContainsKey() {
-    }
 
     @Test
     public void testPut() {
     }
 
-    @Test
-    public void testRemoveNode() {
-    }
 
     @Test
     public void testKeys() {
@@ -39,6 +25,5 @@ public class BinarySearchTreeTest {
 
     @Test
     public void testSize() {
-    }
-    
+    }    
 }
