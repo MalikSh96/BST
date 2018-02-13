@@ -1,12 +1,11 @@
-//hej
 package binarysearchtree;
 
 public class Node 
 {
     private int key;
     private String name;
-    private Node leftC;
-    private Node rightC;
+    public Node leftC;
+    public Node rightC;
 
     public Node(int key, String name) 
     {

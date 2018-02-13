@@ -4,6 +4,10 @@ public class BinarySearchTree
 {
 
     Node root;
+
+    public BinarySearchTree() {
+    }
+    
     
     public static void main(String[] args) 
     {
@@ -20,9 +24,13 @@ public class BinarySearchTree
 //        
 //    }
     
-    public void size()
+    public int size(Node node)
     {
-        
+        if(node == null)
+            return 0;
+        else {
+            return (size(node.leftC) + 1 + size(node.rightC));
+        }
     }
     
     public void put(Node keys)
