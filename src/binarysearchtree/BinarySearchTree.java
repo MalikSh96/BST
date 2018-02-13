@@ -21,7 +21,8 @@ public class BinarySearchTree {
         bst.keys(bst.list, bst.root);
         System.out.println(bst.size(bst.root));
         System.out.println(bst.get(11, bst.root));
-        System.out.println(bst.containsKey(29, bst.root));
+        System.out.println("Key 11: " + bst.containsKey(11, bst.root));
+        System.out.println("Key 29: "+ bst.containsKey(29, bst.root));
     }
     
     public String get(int key)
