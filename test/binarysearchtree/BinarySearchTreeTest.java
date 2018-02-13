@@ -15,7 +15,17 @@ public class BinarySearchTreeTest {
 
 
     @Test
-    public void testPut() {
+    public void testPut() 
+    {
+        System.out.println("Test put");
+        int key = 10;
+        String name = "Test";
+        
+        BinarySearchTree bst = new BinarySearchTree();
+        
+        assertNull(bst.get(key));
+        bst.put(key, name);
+        assertEquals(name, bst.get(key));     
     }
 
 

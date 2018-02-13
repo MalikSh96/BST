@@ -19,8 +19,14 @@ public class BinarySearchTree {
         System.out.println(bst.get(11, bst.root));
         System.out.println(bst.containsKey(29, bst.root));
     }
+    
+    public String get(int key)
+    {
+        Node node = get(key, root);        
+        return node == null ? null : node.name;
+    }
 
-    public Node get(int key, Node node) 
+    private Node get(int key, Node node) 
     {
         Node getNode = null;
         if (node == null) return null;
@@ -28,7 +34,7 @@ public class BinarySearchTree {
         if(node.leftC != null) getNode = get(key, node.leftC);
         if (getNode == null) getNode = get(key, node.rightC);
         return getNode;
-        }
+    }
     
 
     public boolean containsKey(int key, Node node)
