@@ -17,6 +17,7 @@ public class BinarySearchTree {
         bst.keys(bst.root);
         System.out.println(bst.size(bst.root));
         System.out.println(bst.get(11, bst.root));
+        System.out.println(bst.containsKey(352365, bst.root));
     }
 
     public Node get(int key, Node node) 
@@ -25,18 +26,19 @@ public class BinarySearchTree {
         if (node == null) return null;
         if(node.key == key) return node;
         if(node.leftC != null) getNode = get(key, node.leftC);
-        if (getNode == null) 
-        {
-            getNode = get(key, node.rightC);
-        }
-            return getNode;
+        if (getNode == null) getNode = get(key, node.rightC);
+        return getNode;
         }
     
 
-//    public boolean containsKey(Node key)
-//    {
-//        
-//    }
+    public boolean containsKey(int key, Node node)
+    {
+        if(node == null) return false;
+        if(node.key == key) return true;
+        if(get(key, node.leftC) != null) {return true;}
+        else if(get(key, node.rightC) != null) {return true;}
+     return false;   
+    }
     
     
     private void put(int key, String name, Node node) 
