@@ -36,7 +36,8 @@ public class BinarySearchTreeTest {
     }
 
     @Test
-    public void testSize() {
+    public void testSize() 
+    {
         BinarySearchTree bst = new BinarySearchTree();
         bst.put(0, "flaske");
         bst.put(4, "glas");
