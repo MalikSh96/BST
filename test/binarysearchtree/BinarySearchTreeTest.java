@@ -9,6 +9,8 @@ public class BinarySearchTreeTest {
     public BinarySearchTreeTest() {
     }
     
+    Node root;
+    
     @Before
     public void setUp() throws Exception {
     }
@@ -25,5 +27,11 @@ public class BinarySearchTreeTest {
 
     @Test
     public void testSize() {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.put(0, "flaske");
+        bst.put(4, "glas");
+        int expResult = 2;
+        int result = bst.size(bst.root);
+        assertEquals(expResult,result);
     }    
 }
