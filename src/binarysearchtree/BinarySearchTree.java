@@ -1,10 +1,11 @@
 package binarysearchtree;
 
-public class BinarySearchTree {
-
+public class BinarySearchTree 
+{
     Node root;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         BinarySearchTree bst = new BinarySearchTree();
         bst.put(10, "A");
         bst.put(15, "B");
@@ -36,28 +37,32 @@ public class BinarySearchTree {
         return getNode;
     }
     
-
     public boolean containsKey(int key, Node node)
     {
         if(node == null) return false;
         if(node.key == key) return true;
-        if(get(key, node.leftC) != null) {return true;}
-        else if(get(key, node.rightC) != null) {return true;}
-     return false;   
+        if(get(key, node.leftC) != null)
+        {
+            return true;
+        }
+        else if(get(key, node.rightC) != null)
+        {
+            return true;
+        }
+        return false;   
     }
-    
-    
+        
     private void put(int key, String name, Node node) 
     {
-        if (key == node.key) 
+        if(key == node.key) 
         {
             node.name = name;
             return;
         }
 
-        if (key < node.key) 
+        if(key < node.key) 
         {
-            if (node.leftC == null) 
+            if(node.leftC == null) 
             {
                 node.leftC = new Node(key, name);
                 return;
@@ -66,9 +71,9 @@ public class BinarySearchTree {
         }
 
         //do the opposite
-        if (key > node.key) 
+        if(key > node.key) 
         {
-            if (node.rightC == null) 
+            if(node.rightC == null) 
             {
                 node.rightC = new Node(key, name);
                 return;
@@ -79,7 +84,7 @@ public class BinarySearchTree {
 
     public void put(int key, String name) 
     {
-        if (root == null) 
+        if(root == null) 
         {
             //Make new root
             root = new Node(key, name);
@@ -144,7 +149,7 @@ public class BinarySearchTree {
                 root = focusNode.leftC;
             }
             else if(isItLeftC)
-            {
+            {               
                 parent.leftC = focusNode.leftC;
             }
             else
@@ -165,13 +170,13 @@ public class BinarySearchTree {
             }
             else
             {
-                parent.rightC = focusNode.leftC;
+                parent.rightC = focusNode.rightC;
             }
         }
         //If there are two children
         else
         {
-            Node replace = getReplace(focusNode);
+            Node replace = getReplace(focusNode, parent);
             
             //if the focusNode is root, then we need to replace root with the replacement that got send back
             if(focusNode == root)
@@ -191,35 +196,47 @@ public class BinarySearchTree {
         return true;
     }
     
-    private Node getReplace(Node replacedNode) 
+    public Node minKey(Node node)
+    {
+        if(node.leftC == null)
+        {
+            return node;
+        }
+        else
+        {
+            return minKey(node.leftC);
+        }
+    }
+    
+    private Node getReplace(Node focusNode, Node parent) 
     {
         //We need to define our replacement parent and the replacement itself
-        Node replaceParent = replacedNode;
-        Node replacement = replacedNode;
         
-        Node focusNode = replacedNode.rightC; //We are always replacing with the right child
         
-        while(focusNode != null)
-        {
-            replaceParent = replacement;
-            replacement = focusNode;
-            focusNode = focusNode.leftC;
-        }
+         //We are always replacing with the right child
+        Node oldFocus = focusNode;
+        Node focusLeftC = focusNode.leftC;
         
-        /*if the replacement ISN'T the rightChild, we need to move the replacement 
-        into the parents leftChild slot, and then move the replacedNode rightChild into the replacement rightChild*/
-        if(replacement != replacedNode.rightC)
-        {
-            replaceParent.leftC = replacement.rightC;
-            replacement.rightC = replacedNode.rightC;
-        }
+        focusNode = focusNode.rightC;
+        parent.leftC = focusNode; 
+        minKey(focusNode).leftC = focusLeftC;
         
-        return replacement;
+        return oldFocus;
+        
+//        /*if the replacement ISN'T the rightChild, we need to move the replacement 
+//        into the parents leftChild slot, and then move the replacedNode rightChild into the replacement rightChild*/
+//        if(replacement != focusNode.rightC)
+//        {
+//            replaceParent.leftC = replacement.rightC;
+//            replacement.rightC = focusNode.rightC;
+//        }
+        
+        //return replacement;
     }
      
     public void keys(Node node) 
     {
-        if (node != null) 
+        if(node != null) 
         {
             System.out.println(node);
             keys(node.leftC);
@@ -229,7 +246,7 @@ public class BinarySearchTree {
 
     public int size(Node node) 
     {
-        if (node == null) 
+        if(node == null) 
         {
             return 0;
         } 
