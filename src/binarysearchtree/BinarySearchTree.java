@@ -1,8 +1,12 @@
 package binarysearchtree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinarySearchTree 
 {
     Node root;
+    List<Integer> list = new ArrayList<>();
 
     public static void main(String[] args) 
     {
@@ -15,10 +19,11 @@ public class BinarySearchTree
         bst.put(11, "M");
         bst.put(29, "O");
         bst.removeNode(29);
-        bst.keys(bst.root);
+        bst.keys(bst.list, bst.root);
         System.out.println(bst.size(bst.root));
         System.out.println(bst.get(11, bst.root));
-        System.out.println(bst.containsKey(29, bst.root));
+        System.out.println("Key 11: " + bst.containsKey(11, bst.root));
+        System.out.println("Key 29: "+ bst.containsKey(29, bst.root));
     }
     
     public String get(int key)
@@ -27,7 +32,7 @@ public class BinarySearchTree
         return node == null ? null : node.name;
     }
 
-    private Node get(int key, Node node) 
+    public Node get(int key, Node node) 
     {
         Node getNode = null;
         if (node == null) return null;
@@ -222,28 +227,26 @@ public class BinarySearchTree
         minKey(focusNode).leftC = focusLeftC;
         
         return oldFocus;
-        
-//        /*if the replacement ISN'T the rightChild, we need to move the replacement 
-//        into the parents leftChild slot, and then move the replacedNode rightChild into the replacement rightChild*/
-//        if(replacement != focusNode.rightC)
-//        {
-//            replaceParent.leftC = replacement.rightC;
-//            replacement.rightC = focusNode.rightC;
-//        }
-        
-        //return replacement;
+
     }
      
-    public void keys(Node node) 
+    public List<Integer> keys() 
     {
-        if(node != null) 
-        {
-            System.out.println(node);
-            keys(node.leftC);
-            keys(node.rightC);
-        }
+        List<Integer> list = new ArrayList<>();
+        keys(list, root);
+        return list;
     }
 
+    public void keys(List<Integer> list, Node node){
+        if (node == null) {
+            System.out.println(list.toString());
+            return;
+        }
+        keys(list, node.leftC);
+        list.add(node.key);
+        keys(list, node.rightC);
+    }
+    
     public int size(Node node) 
     {
         if(node == null) 

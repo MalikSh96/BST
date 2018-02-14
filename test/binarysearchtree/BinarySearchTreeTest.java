@@ -1,5 +1,7 @@
 package binarysearchtree;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -74,6 +76,14 @@ public class BinarySearchTreeTest {
     @Test
     public void testKeys() 
     {
+        BinarySearchTree bst = new BinarySearchTree();
+        List<Integer> list = new ArrayList<>();
+        
+        bst.put(10, "A");
+        bst.keys(list, bst.root);
+        int result = list.size();
+        int expResult = 1;
+        assertEquals(expResult, result);
         
     }
 
